@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Barker — Actor & Director Portfolio</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Instrument Serif & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Konfigurasi Kustom Warna & Font Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        peanut: '#B9A58F',
+                        cream: '#DDD1C1',
+                        maroon: '#5E1216',
+                        espresso: '#2A1A14',
+                    },
+                    fontFamily: {
+                        serif: ['"Instrument Serif"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-peanut text-espresso font-sans antialiased py-6 sm:py-8 px-4 sm:px-6 flex justify-center min-h-screen">
+
+    <!-- Main Container -->
+    <main class="w-full max-w-[960px] flex flex-col gap-6">
+
+        <!-- 1. Top Floating Pill Navbar (Maroon) -->
+        <nav class="bg-maroon text-white rounded-full px-4 sm:px-6 py-3 flex items-center justify-between shadow-lg shadow-espresso/15 sticky top-4 z-30">
+            <!-- Ikon Home -->
+            <a href="#" class="w-9 h-9 rounded-full border border-white/60 flex items-center justify-center hover:bg-white hover:text-maroon transition duration-200 shrink-0" aria-label="Beranda">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+            </a>
+
+            <!-- 4 Link Navigasi dengan Sub-label -->
+            <div class="flex items-center gap-4 sm:gap-8 overflow-x-auto no-scrollbar px-2">
+                <a href="#about" class="group flex flex-col shrink-0">
+                    <span class="text-xs font-semibold group-hover:underline">Simon Barker</span>
+                    <span class="text-[10px] text-white/75 hidden sm:block">Actor &amp; Director</span>
+                </a>
+                <a href="#work" class="group flex flex-col shrink-0">
+                    <span class="text-xs font-semibold group-hover:underline">IMDb</span>
+                    <span class="text-[10px] text-white/75 hidden sm:block">Filmography &amp; Credits</span>
+                </a>
+                <a href="#exploration" class="group flex flex-col shrink-0">
+                    <span class="text-xs font-semibold group-hover:underline">Film &amp; TV</span>
+                    <span class="text-[10px] text-white/75 hidden sm:block">Selected Roles</span>
+                </a>
+                <a href="#contact" class="group flex flex-col shrink-0">
+                    <span class="text-xs font-semibold group-hover:underline">Management</span>
+                    <span class="text-[10px] text-white/75 hidden sm:block">Press &amp; Representation</span>
+                </a>
+            </div>
+
+            <!-- Ikon Search Interaktif -->
+            <button onclick="toggleSearchModal()" class="w-9 h-9 rounded-full border border-white/60 flex items-center justify-center hover:bg-white hover:text-maroon transition duration-200 shrink-0 cursor-pointer" aria-label="Cari Filmografi">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </button>
+        </nav>
+
+        <!-- 2. Hero Editorial Card (Cream) -->
+        <section id="about" class="bg-cream rounded-[24px] p-5 sm:p-6 shadow-md shadow-espresso/10">
+            <!-- Hero Banner dengan Foto Potret Simon Barker -->
+            <div class="relative w-full h-[360px] sm:h-[420px] rounded-2xl bg-espresso overflow-hidden flex items-end justify-center text-white mb-6">
+                <!-- Foto Potret Utama -->
+                <img src="simon 3.jpg" alt="Simon Barker Portrait" onerror="this.onerror=null;this.src='https://placehold.co/960x540/3A1918/DDD1C1?text=Simon+Barker';" class="absolute inset-0 w-full h-full object-cover object-top" />
+                <!-- Overlay Gradien Editorial agar Teks Kontras -->
+                <div class="absolute inset-0 bg-gradient-to-t from-espresso/85 via-espresso/25 to-maroon/20"></div>
+                
+                <!-- Teks Editorial Besar -->
+                <div class="text-center px-6 z-10 mb-28 sm:mb-24">
+                    <span class="text-[11px] uppercase tracking-[0.25em] text-white/85 block mb-2 drop-shadow">Selected Filmography • 1993 — 2026</span>
+                    <h1 class="font-serif text-4xl sm:text-6xl font-normal tracking-tight leading-none drop-shadow-md">
+                        Actor, Director &amp; <span class="italic">Storyteller</span>
+                    </h1>
+                </div>
+
+                <!-- Floating Mini Card 'The Mentalist' di Kiri Bawah -->
+                <button onclick="openProjectModal('mentalist')" class="absolute bottom-4 left-4 w-24 h-24 sm:w-28 sm:h-28 bg-maroon rounded-xl border-[3px] border-cream flex flex-col items-center justify-center text-center p-2 shadow-lg hover:scale-105 transition cursor-pointer group z-10">
+                    <span class="text-[9px] uppercase tracking-wider text-white/80 group-hover:text-white">Iconic Role</span>
+                    <span class="font-serif text-base sm:text-lg leading-tight mt-0.5 text-white">The Mentalist</span>
+                    <span class="text-[9px] mt-1 underline text-white/70">Detail →</span>
+                </button>
+
+                <!-- Floating Badge Profil dengan Foto Wajah di Kanan Bawah -->
+                <div class="absolute bottom-4 right-4 bg-espresso/90 backdrop-blur-md border border-white/20 rounded-xl px-3.5 py-2.5 flex items-center gap-3 shadow-lg z-10">
+                    <img src="simon 3.jpg" alt="Simon Barker" onerror="this.onerror=null;this.src='https://placehold.co/80x80/5E1216/FFFFFF?text=SB';" class="w-9 h-9 rounded-lg object-cover object-top border border-white/30 shrink-0" />
+                    <div class="text-left">
+                        <strong class="text-xs font-semibold block leading-tight text-white">Simon Barker (Simon Baker)</strong>
+                        <span class="text-[10px] text-white/75 block">Australian Actor &amp; Filmmaker</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Hero: 3 Lingkaran Kategori + Bio Editorial -->
+            <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 items-center">
+                <!-- 3 Lingkaran Kategori -->
+                <div class="flex items-center gap-3.5 justify-center md:justify-start">
+                    <button onclick="filterCategory('Series')" class="w-[72px] h-[72px] rounded-full bg-maroon border-2 border-espresso flex flex-col items-center justify-center text-white text-xs font-semibold tracking-wide shadow-sm hover:bg-espresso transition cursor-pointer">
+                        <span>Series</span>
+                        <span class="text-[9px] font-normal text-white/70">TV</span>
+                    </button>
+                    <button onclick="filterCategory('Cinema')" class="w-[72px] h-[72px] rounded-full bg-maroon border-2 border-espresso flex flex-col items-center justify-center text-white text-xs font-semibold tracking-wide shadow-sm hover:bg-espresso transition cursor-pointer">
+                        <span>Cinema</span>
+                        <span class="text-[9px] font-normal text-white/70">Film</span>
+                    </button>
+                    <button onclick="filterCategory('Director')" class="w-[72px] h-[72px] rounded-full bg-maroon border-2 border-espresso flex flex-col items-center justify-center text-white text-xs font-semibold tracking-wide shadow-sm hover:bg-espresso transition cursor-pointer">
+                        <span>Direct</span>
+                        <span class="text-[9px] font-normal text-white/70">Auteur</span>
+                    </button>
+                </div>
+
+                <!-- Deskripsi Bio Editorial -->
+                <div class="text-center md:text-left">
+                    <h2 class="text-maroon font-bold text-lg sm:text-xl mb-1">
+                        Tentang Perjalanan Karier &amp; Akting
+                    </h2>
+                    <p class="text-xs sm:text-sm leading-relaxed text-espresso/90">
+                        Aktor dan sutradara asal Launceston, Tasmania, yang mendunia lewat perannya yang karismatik dan penuh ketajaman observasi sebagai Patrick Jane dalam serial CBS <em>The Mentalist</em> (151 episode) serta Nick Fallin dalam <em>The Guardian</em>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Middle Swiss Grid (2 Kolom) -->
+        <section id="work" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Kolom Kiri: Kartu Berbingkai Cream dengan Foto Potret Simon Barker -->
+            <div class="bg-cream rounded-[24px] p-4 flex shadow-md shadow-espresso/10">
+                <div onclick="openProjectModal('mentalist')" class="w-full min-h-[340px] rounded-2xl bg-maroon text-white p-6 flex flex-col justify-between relative overflow-hidden group cursor-pointer">
+                    <!-- Foto Potret Wajah -->
+                    <img src="simon 3.jpg" alt="Simon Barker as Patrick Jane" onerror="this.onerror=null;this.src='https://placehold.co/600x750/5E1216/DDD1C1?text=Simon+Barker';" class="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition duration-500" />
+                    <!-- Overlay Gradien Bawah agar Teks Terbaca Jelas -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-espresso/90 via-espresso/20 to-transparent"></div>
+
+                    <div class="flex items-center justify-between relative z-10">
+                        <span class="text-[10px] uppercase tracking-[0.2em] bg-maroon/90 backdrop-blur-sm text-white px-3 py-1 rounded-full border border-white/20">Signature Role</span>
+                        <div class="w-9 h-9 rounded-full bg-espresso/60 backdrop-blur-sm border border-white/30 flex items-center justify-center text-sm group-hover:bg-white group-hover:text-maroon transition">
+                            ↗
+                        </div>
+                    </div>
+
+                    <div class="relative z-10">
+                        <span class="text-[11px] uppercase tracking-[0.15em] text-white/80 mb-1 block">
+                            01 / Peran Ikonik • 2008 — 2015
+                        </span>
+                        <h3 class="font-serif text-3xl sm:text-4xl font-normal leading-tight">
+                            The Mentalist — Patrick Jane
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kolom Kanan: Split Card Maroon dengan Bagian Atas Cream -->
+            <div class="bg-maroon rounded-[24px] p-4 flex flex-col justify-between gap-4 shadow-md shadow-espresso/15">
+                <div class="bg-cream rounded-2xl p-6 text-espresso flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 class="text-xl font-bold">Simon Barker</h3>
+                            <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-maroon text-white">Emmy Nominee</span>
+                        </div>
+                        <p class="text-xs font-semibold text-maroon mb-3">
+                            Actor, Director &amp; Producer • Sydney / Los Angeles
+                        </p>
+                        <p class="text-xs leading-relaxed text-espresso/85">
+                            Memulai karier di televisi Australia sebelum menembus Hollywood lewat <em>L.A. Confidential</em>, <em>The Devil Wears Prada</em>, hingga menyutradarai film layar lebar pemenang penghargaan <em>Breath</em> (2017).
+                        </p>
+                    </div>
+
+                    <!-- Statistik Grid -->
+                    <div class="grid grid-cols-3 gap-4 mt-5 pt-4 border-t border-espresso/15">
+                        <div>
+                            <strong class="block text-lg font-bold text-espresso">45+</strong>
+                            <span class="text-[11px] text-espresso/75">Film &amp; Serial</span>
+                        </div>
+                        <div>
+                            <strong class="block text-lg font-bold text-espresso">30+ Thn</strong>
+                            <span class="text-[11px] text-espresso/75">Karier Akting</span>
+                        </div>
+                        <div>
+                            <strong class="block text-lg font-bold text-espresso">151</strong>
+                            <span class="text-[11px] text-espresso/75">Ep. Mentalist</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian Bawah: 2 Tombol Cream Interaktif -->
+                <div id="contact" class="grid grid-cols-2 gap-3">
+                    <button onclick="handleDownloadCV()" class="bg-cream text-espresso text-center py-3 px-4 rounded-xl text-xs font-bold hover:bg-white transition cursor-pointer shadow-sm">
+                        Unduh Press Kit
+                    </button>
+                    <button onclick="openContactModal()" class="bg-cream text-espresso text-center py-3 px-4 rounded-xl text-xs font-bold hover:bg-white transition cursor-pointer shadow-sm">
+                        Kontak Agensi
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Bottom Asymmetric Grid -->
+        <section id="exploration" class="grid grid-cols-1 md:grid-cols-[1fr_1.15fr] gap-6 items-start">
+            <!-- Sisi Kiri: Mini Profile Bulat + Kotak Arsip Filmografi -->
+            <div class="flex flex-col gap-5">
+                <!-- Mini Profile Center dengan Foto Wajah Bulat -->
+                <div class="text-center py-2">
+                    <div class="w-20 h-20 rounded-full border-[3px] border-maroon bg-cream mx-auto mb-2.5 overflow-hidden shadow-sm">
+                        <img src="simon 3.jpg" alt="Simon Barker Avatar" onerror="this.onerror=null;this.src='https://placehold.co/160x160/DDD1C1/5E1216?text=SB';" class="w-full h-full object-cover object-top" />
+                    </div>
+                    <div class="text-maroon font-bold text-sm mb-3">@snappytoes • Official Archive</div>
+                    <div class="flex justify-center gap-7 text-xs">
+                        <div>
+                            <strong class="block text-base font-bold text-maroon">7</strong>
+                            <span class="text-espresso/85">Musim CBI</span>
+                        </div>
+                        <div>
+                            <strong class="block text-base font-bold text-maroon">2x</strong>
+                            <span class="text-espresso/85">Golden Globe Nom</span>
+                        </div>
+                        <div>
+                            <strong class="block text-base font-bold text-maroon">AACTA</strong>
+                            <span class="text-espresso/85">Best Director</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kotak Arsip Filmografi dengan Pill Bar Maroon & 2 Kartu Interaktif -->
+                <div class="bg-cream rounded-[24px] p-4 shadow-md shadow-espresso/10">
+                    <div class="bg-maroon text-white rounded-full px-4 py-2 text-xs flex items-center justify-between mb-3">
+                        <span class="font-medium">Filmografi Pilihan</span>
+                        <span class="text-white/75 text-[11px]">Cinema &amp; Directing</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div onclick="openProjectModal('prada')" class="h-28 bg-espresso rounded-xl p-3.5 flex flex-col justify-between text-white hover:bg-maroon transition cursor-pointer group">
+                            <span class="text-[10px] text-white/70 flex justify-between">
+                                <span>02 / Cinema</span>
+                                <span class="group-hover:translate-x-0.5 transition">→</span>
+                            </span>
+                            <strong class="text-xs font-semibold leading-snug">The Devil Wears Prada (2006)</strong>
+                        </div>
+                        <div onclick="openProjectModal('breath')" class="h-28 bg-espresso rounded-xl p-3.5 flex flex-col justify-between text-white hover:bg-maroon transition cursor-pointer group">
+                            <span class="text-[10px] text-white/70 flex justify-between">
+                                <span>03 / Director</span>
+                                <span class="group-hover:translate-x-0.5 transition">→</span>
+                            </span>
+                            <strong class="text-xs font-semibold leading-snug">Breath — Feature Film (2017)</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sisi Kanan: Bingkai Galeri Maroon Besar Bergaya Poster Retrospektif -->
+            <div class="bg-maroon rounded-[24px] p-5 text-white shadow-md shadow-espresso/15">
+                <div class="h-[365px] rounded-2xl bg-gradient-to-t from-espresso/95 via-espresso/55 to-maroon/30 border border-white/15 p-7 flex flex-col justify-end items-center text-center relative overflow-hidden">
+                    <!-- Elemen Lingkaran Artistik di Latar Poster -->
+                    <div class="w-40 h-40 rounded-full border border-white/15 absolute top-8 flex items-center justify-center">
+                        <div class="w-28 h-28 rounded-full border border-white/20 flex items-center justify-center font-serif italic text-white/60 text-lg">
+                            CBI • 2008
+                        </div>
+                    </div>
+
+                    <span class="text-[10px] uppercase tracking-[0.25em] text-white/75 mb-2 z-10">Screen Retrospective</span>
+                    <h3 class="font-serif text-4xl font-normal mb-2 z-10">Arsip Layar &amp; Sutradara</h3>
+                    <p class="text-xs text-white/80 max-w-xs leading-relaxed mb-5 z-10">
+                        Menelusuri peran-peran ikonik dari konsultan California Bureau of Investigation hingga karya sinema independen Australia.
+                    </p>
+                    <button onclick="openAllProjectsModal()" class="text-xs font-semibold bg-white/15 hover:bg-cream hover:text-espresso px-5 py-2.5 rounded-full transition cursor-pointer z-10 border border-white/20">
+                        Lihat Semua Filmografi →
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL 1: Detail Filmografi -->
+    <div id="projectModal" class="fixed inset-0 bg-espresso/75 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-cream text-espresso w-full max-w-lg rounded-[24px] p-6 sm:p-7 shadow-2xl border-2 border-maroon relative animate-fadeIn">
+            <button onclick="closeModal('projectModal')" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-maroon text-white flex items-center justify-center text-sm hover:bg-espresso transition cursor-pointer">
+                ✕
+            </button>
+            <span id="modalCategory" class="text-[11px] uppercase tracking-widest text-maroon font-bold block mb-1">Kategori</span>
+            <h3 id="modalTitle" class="font-serif text-3xl sm:text-4xl text-espresso mb-3">Judul Karya</h3>
+            <div class="w-full h-36 rounded-xl bg-maroon text-white p-5 flex flex-col justify-end mb-4">
+                <span id="modalYear" class="text-xs text-white/75">Tahun • Peran</span>
+                <p id="modalHighlight" class="font-serif text-xl italic">Sorotan pencapaian</p>
+            </div>
+            <p id="modalDesc" class="text-xs sm:text-sm leading-relaxed text-espresso/90 mb-5">
+                Deskripsi lengkap peran atau film akan muncul di sini.
+            </p>
+            <div class="flex items-center justify-between pt-4 border-t border-espresso/15">
+                <div id="modalTags" class="flex gap-2 flex-wrap"></div>
+                <button onclick="closeModal('projectModal')" class="bg-maroon text-white text-xs font-semibold px-4 py-2 rounded-xl hover:bg-espresso transition cursor-pointer">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Pencarian & Filter Filmografi -->
+    <div id="searchModal" class="fixed inset-0 bg-espresso/75 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-cream text-espresso w-full max-w-md rounded-[24px] p-6 shadow-2xl border-2 border-maroon relative">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-serif text-2xl text-maroon">Cari Filmografi &amp; Peran</h3>
+                <button onclick="closeModal('searchModal')" class="w-8 h-8 rounded-full bg-maroon text-white flex items-center justify-center text-xs cursor-pointer">✕</button>
+            </div>
+            <input type="text" id="searchInput" oninput="filterProjectsList()" placeholder="Ketik judul atau kategori (misal: Mentalist, Cinema, Director)..." class="w-full bg-white/80 border border-espresso/20 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-maroon mb-4">
+            
+            <div id="searchResults" class="flex flex-col gap-2.5 max-h-60 overflow-y-auto">
+                <!-- Daftar filmografi diisi otomatis oleh JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: Hubungi Agensi / Manajemen -->
+    <div id="contactModal" class="fixed inset-0 bg-espresso/75 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-cream text-espresso w-full max-w-md rounded-[24px] p-6 shadow-2xl border-2 border-maroon relative">
+            <button onclick="closeModal('contactModal')" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-maroon text-white flex items-center justify-center text-xs cursor-pointer">✕</button>
+            <span class="text-[10px] uppercase tracking-widest text-maroon font-bold">Representation &amp; Press</span>
+            <h3 class="font-serif text-3xl mb-2">Kontak Manajemen</h3>
+            <p class="text-xs text-espresso/80 mb-4">Kirimkan pertanyaan terkait proyek film, kolaborasi penyutradaraan, atau wawancara media.</p>
+            
+            <form onsubmit="submitContactForm(event)" class="flex flex-col gap-3">
+                <input type="text" required placeholder="Nama / Nama Studio" class="w-full bg-white/80 border border-espresso/20 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-maroon">
+                <input type="email" required placeholder="Alamat Email Resmi" class="w-full bg-white/80 border border-espresso/20 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-maroon">
+                <textarea rows="3" required placeholder="Detail naskah, produksi, atau keperluan media..." class="w-full bg-white/80 border border-espresso/20 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-maroon"></textarea>
+                <button type="submit" class="bg-maroon text-white font-semibold text-xs py-3 rounded-xl hover:bg-espresso transition cursor-pointer mt-1">
+                    Kirim ke Manajemen
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-maroon text-white px-5 py-3 rounded-2xl shadow-xl text-xs font-medium transform translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center gap-2.5 border border-white/20">
+        <span class="w-2 h-2 rounded-full bg-cream"></span>
+        <span id="toastMessage">Notifikasi</span>
+    </div>
+
+    <!-- JavaScript Interaktif -->
+    <script>
+        // Data Filmografi & Peran Asli Simon Barker (Simon Baker)
+        const projectsData = {
+            'mentalist': {
+                category: '01 / Series • Peran Utama & Sutradara Episode',
+                title: 'The Mentalist — Patrick Jane',
+                year: '2008 — 2015 • CBS Television (7 Musim, 151 Episode)',
+                highlight: 'Nominasi Primetime Emmy & Golden Globe untuk Aktor Terbaik.',
+                desc: 'Memerankan Patrick Jane, mantan cenayang selebritas yang bekerja sebagai konsultan independen bagi California Bureau of Investigation (CBI) menggunakan kemampuan observasi tajam, hipnosis, dan psikologi untuk memecahkan kasus pembunuhan serta memburu Red John.',
+                tags: ['Series', 'Patrick Jane', 'CBS', 'Emmy Nominee']
+            },
+            'prada': {
+                category: '02 / Cinema • Feature Film',
+                title: 'The Devil Wears Prada',
+                year: '2006 • Peran: Christian Thompson',
+                highlight: 'Beradu akting dengan Meryl Streep dan Anne Hathaway.',
+                desc: 'Berperan sebagai Christian Thompson, seorang penulis karismatik dan berpengaruh di dunia penerbitan majalah mode New York yang menjadi sosok penting dalam perjalanan karier Andrea Sachs.',
+                tags: ['Cinema', '20th Century Fox', 'Drama Komedi']
+            },
+            'breath': {
+                category: '03 / Director & Actor • Feature Film',
+                title: 'Breath (Adaptasi Novel Tim Winton)',
+                year: '2017 • Sutradara, Penulis Naskah, Produser & Aktor (Sando)',
+                highlight: 'Debut penyutradaraan film layar lebar; pemenang AACTA Awards.',
+                desc: 'Film drama kedewasaan berlatar pesisir Australia Barat era 1970-an tentang dua remaja peselancar yang menjalin persahabatan dengan mantan peselancar profesional eksentrik bernama Bill "Sando" Sanderson.',
+                tags: ['Director', 'Cinema', 'Australian Film', 'AACTA Winner']
+            },
+            'guardian': {
+                category: '04 / Series • Drama Hukum',
+                title: 'The Guardian — Nick Fallin',
+                year: '2001 — 2004 • CBS Television (3 Musim, 67 Episode)',
+                highlight: 'Nominasi Golden Globe Award untuk Aktor Terbaik Serial Drama.',
+                desc: 'Memerankan Nick Fallin, pengacara korporat ambisius di Pittsburgh yang dijatuhi hukuman pelayanan masyarakat sebagai pembela anak-anak di lembaga bantuan hukum.',
+                tags: ['Series', 'Legal Drama', 'Golden Globe Nominee']
+            },
+            'laconfidential': {
+                category: '05 / Cinema • Neo-Noir Crime',
+                title: 'L.A. Confidential & Margin Call',
+                year: '1997 & 2011 • Matt Reynolds / Jared Cohen',
+                highlight: 'Karya sinema peraih pujian kritis bersama jajaran aktor papan atas.',
+                desc: 'Tampil sebagai aktor muda ambisius Matt Reynolds dalam mahakarya neo-noir L.A. Confidential (1997), serta eksekutif bank investasi Jared Cohen dalam thriller finansial Margin Call (2011).',
+                tags: ['Cinema', 'Neo-Noir', 'Ensemble Cast']
+            }
+        };
+
+        // Buka Modal Detail Filmografi
+            document.getElementById('modalDesc').textContent = data.desc;
+
+            const tagsContainer = document.getElementById('modalTags');
+            tagsContainer.innerHTML = '';
+            data.tags.forEach(tag => {
+                const span = document.createElement('span');
+                span.className = 'text-[10px] font-semibold bg-maroon/10 text-maroon px-2.5 py-1 rounded-full';
+                span.textContent = tag;
+                tagsContainer.appendChild(span);
+            });
+
+            const modal = document.getElementById('projectModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        // Tutup Modal
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Tutup modal saat klik area gelap di luar kartu
+        window.addEventListener('click', (e) => {
+            ['projectModal', 'searchModal', 'contactModal'].forEach(id => {
+                const el = document.getElementById(id);
+                if (e.target === el) closeModal(id);
+            });
+        });
+
+        // Fitur Pencarian & Filter
+        function toggleSearchModal() {
+            const modal = document.getElementById('searchModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.getElementById('searchInput').value = '';
+            filterProjectsList();
+            setTimeout(() => document.getElementById('searchInput').focus(), 100);
+        }
+
+        function filterCategory(categoryName) {
+            toggleSearchModal();
+            document.getElementById('searchInput').value = categoryName;
+            filterProjectsList();
+        }
+
+        function openAllProjectsModal() {
+            toggleSearchModal();
+        }
+
+        function filterProjectsList() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = '';
+
+            Object.entries(projectsData).forEach(([key, item]) => {
+                const matchText = `${item.title} ${item.category} ${item.tags.join(' ')}`.toLowerCase();
+                if (matchText.includes(query)) {
+                    const btn = document.createElement('button');
+                    btn.className = 'w-full text-left p-3 rounded-xl bg-white/60 hover:bg-maroon hover:text-white transition flex items-center justify-between group cursor-pointer';
+                    btn.onclick = () => {
+                        closeModal('searchModal');
+                        openProjectModal(key);
+                    };
+                    btn.innerHTML = `
+                        <div>
+                            <span class="text-[10px] uppercase tracking-wider opacity-75 block">${item.category}</span>
+                            <strong class="text-xs font-bold">${item.title}</strong>
+                        </div>
+                        <span class="text-xs group-hover:translate-x-1 transition">→</span>
+                    `;
+                    resultsContainer.appendChild(btn);
+                }
+            });
+
+            if (resultsContainer.innerHTML === '') {
+                resultsContainer.innerHTML = `<p class="text-xs text-center py-4 opacity-70">Tidak ada proyek yang cocok dengan pencarian tersebut.</p>`;
+            }
+        }
+
+        // Fitur Unduh Press Kit & Kontak Manajemen
+        function handleDownloadCV() {
+            showToast('Mengunduh Simon_Barker_PressKit_2026.pdf...');
+        }
+
+        function openContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function submitContactForm(e) {
+            e.preventDefault();
+            closeModal('contactModal');
+            e.target.reset();
+            showToast('Pesan berhasil diteruskan ke tim manajemen Simon Barker.');
+        }
+
+        // Toast Notification Helper
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3200);
+        }
+    </script>
+</body>
+</html>
